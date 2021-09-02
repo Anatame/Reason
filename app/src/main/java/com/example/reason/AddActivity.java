@@ -51,12 +51,12 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         addActivity = findViewById(R.id.addactivity_button);
         recyclerView = findViewById(R.id.recyclerView);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         itemList = new ArrayList<>();
 
         itemList = databaseHandler.getAllItems();
 
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewAdapter = new ItemRecyclerViewAdapter(this, itemList);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();

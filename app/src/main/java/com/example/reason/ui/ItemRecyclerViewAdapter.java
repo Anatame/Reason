@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reason.R;
@@ -23,6 +24,8 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     private List<Item> itemList;
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
+
+    private RecyclerViewAdapter recyclerViewAdapter;
 
     public ItemRecyclerViewAdapter(Context context, List<Item> itemList) {
         this.context = context;
@@ -42,9 +45,13 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     public void onBindViewHolder( ViewHolder holder, int position) {
 
         Item item = itemList.get(position);
+        recyclerViewAdapter = new RecyclerViewAdapter(context, itemList);
 
         if(holder.actTextView != null){
             holder.actTextView.setText(item.getActivityName());
+            holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            holder.recyclerView.setAdapter(recyclerViewAdapter);
+            recyclerViewAdapter.notifyDataSetChanged();
         }
 
 
