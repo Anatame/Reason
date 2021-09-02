@@ -45,7 +45,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addItem(Item item){
+        public void addItem(Item item){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -93,6 +93,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //GET ALL THE ITEMS
     public List<Item> getAllItems(){
+
         SQLiteDatabase db = this.getReadableDatabase();
 
         List<Item> itemsList = new ArrayList<>();
